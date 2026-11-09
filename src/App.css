@@ -1,0 +1,738 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap');
+
+/* =====================================
+   GLOBAL
+===================================== */
+
+:root {
+  font-family: 'DM Sans', Arial, sans-serif;
+  color: #17263d;
+  background: #f4f7fb;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #f4f7fb;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  transition: 0.2s ease;
+}
+
+button:hover {
+  filter: brightness(1.06);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* =====================================
+   DASHBOARD BRAND / LOGO
+===================================== */
+
+.dashboard-brand {
+  width: 100%;
+  min-height: 125px;
+  padding: 18px 28px;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 24px;
+  background: linear-gradient(120deg, #052b57, #0875c9);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 45, 95, 0.18);
+}
+
+.dashboard-brand img {
+  width: 105px;
+  height: 88px;
+  object-fit: contain;
+  object-position: center;
+  padding: 8px;
+  background: #ffffff;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.dashboard-brand::after {
+  content: "ATIGA AC MOBIL";
+  display: block;
+  color: #ffffff;
+  font-family: 'Manrope', sans-serif;
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+/* =====================================
+   DASHBOARD BANNER
+===================================== */
+
+.dashboard-banner {
+  width: 100%;
+  height: 310px;
+  margin-bottom: 25px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 16px;
+  background: #073568;
+  box-shadow: 0 8px 24px rgba(15, 55, 100, 0.15);
+}
+
+.dashboard-banner img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 16px;
+}
+
+/* =====================================
+   DASHBOARD STATISTICS
+===================================== */
+
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.dashboard-stat {
+  min-width: 0;
+  padding: 20px 16px;
+  background: #ffffff;
+  border: 1px solid #e5ebf3;
+  border-radius: 13px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  box-shadow: 0 4px 14px rgba(15, 55, 100, 0.04);
+}
+
+.dashboard-stat-icon {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: #e9f2ff;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.dashboard-stat span {
+  display: block;
+  color: #71819b;
+  font-size: 11px;
+  margin-bottom: 7px;
+}
+
+.dashboard-stat strong {
+  display: block;
+  color: #153d75;
+  font-size: 19px;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.dashboard-stat small {
+  display: block;
+  margin-top: 5px;
+  color: #9aa7ba;
+  font-size: 10px;
+}
+
+.stat-green .dashboard-stat-icon {
+  background: #e3f8ed;
+}
+
+.stat-orange .dashboard-stat-icon {
+  background: #fff1df;
+}
+
+.stat-purple .dashboard-stat-icon {
+  background: #f0eaff;
+}
+
+/* =====================================
+   DASHBOARD LOWER SECTION
+===================================== */
+
+.dashboard-lower {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.panel {
+  background: #ffffff;
+  border: 1px solid #e5ebf3;
+  border-radius: 13px;
+  box-shadow: 0 4px 14px rgba(15, 55, 100, 0.04);
+}
+
+.panel-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.panel-heading h3 {
+  margin: 0;
+  color: #163c70;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.panel-heading p {
+  margin: 6px 0 0;
+  color: #94a1b4;
+  font-size: 11px;
+}
+
+.text-btn {
+  border: 0;
+  background: transparent;
+  color: #0860dc;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.dashboard-job-row {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 13px 0;
+  border-bottom: 1px solid #edf1f6;
+}
+
+.dashboard-job-row:last-child {
+  border-bottom: 0;
+}
+
+.dashboard-job-icon {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  background: #edf4ff;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.dashboard-job-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.dashboard-job-info b {
+  display: block;
+  color: #243b5b;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.dashboard-job-info span {
+  display: block;
+  color: #94a1b4;
+  font-size: 10px;
+  margin-top: 5px;
+}
+
+.dashboard-status {
+  padding: 6px 9px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.status-done {
+  background: #e1f7eb;
+  color: #16834c;
+}
+
+.status-waiting {
+  background: #fff2dc;
+  color: #b47716;
+}
+
+.status-process {
+  background: #e6efff;
+  color: #2366bb;
+}
+
+.empty-block {
+  padding: 25px 10px;
+  text-align: center;
+  color: #98a6ba;
+  font-size: 12px;
+}
+
+/* =====================================
+   FINANCE DASHBOARD
+===================================== */
+
+.dashboard-finance-total {
+  margin-top: 20px;
+  color: #0b55b0;
+  font-size: 27px;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.dashboard-finance-caption {
+  color: #8a9ab0;
+  font-size: 11px;
+}
+
+.dashboard-finance-details {
+  margin-top: 20px;
+  display: grid;
+  gap: 12px;
+}
+
+.dashboard-finance-details div {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding-bottom: 11px;
+  border-bottom: 1px solid #edf1f6;
+  font-size: 11px;
+}
+
+.dashboard-finance-details span {
+  color: #8291a6;
+}
+
+.dashboard-finance-details b {
+  color: #203c62;
+  text-align: right;
+}
+
+.dashboard-chart-title {
+  margin: 22px 0 12px;
+  color: #526783;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.dashboard-chart {
+  height: 125px;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-around;
+  gap: 10px;
+  border-bottom: 1px solid #e8edf4;
+}
+
+.dashboard-chart-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 7px;
+  min-width: 0;
+}
+
+.dashboard-chart-bar-wrap {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.dashboard-chart-bar {
+  width: min(30px, 75%);
+  min-height: 3px;
+  border-radius: 6px 6px 0 0;
+  background: linear-gradient(180deg, #3196f5, #0756b5);
+}
+
+.dashboard-chart-column span {
+  color: #8b9bb0;
+  font-size: 10px;
+}
+
+/* =====================================
+   SETTINGS PAGE
+===================================== */
+
+.settings-page {
+  max-width: 900px;
+  display: grid;
+  gap: 17px;
+}
+
+.settings-header {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  padding: 23px;
+  color: #ffffff;
+  background: linear-gradient(120deg, #082d59, #0875c9);
+  border-radius: 14px;
+  box-shadow: 0 7px 20px rgba(8, 45, 89, 0.15);
+}
+
+.settings-icon {
+  width: 55px;
+  height: 55px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.17);
+  font-size: 27px;
+}
+
+.settings-header h2 {
+  margin: 0;
+  font-family: 'Manrope', sans-serif;
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.settings-header p {
+  margin: 6px 0 0;
+  color: #d5e8ff;
+  font-size: 12px;
+}
+
+.settings-card {
+  padding: 22px;
+  background: #ffffff;
+  border: 1px solid #e2eaf4;
+  border-radius: 13px;
+  box-shadow: 0 4px 14px rgba(15, 55, 100, 0.04);
+}
+
+.settings-card-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  color: #17477f;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.settings-card-title span {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  background: #eaf3ff;
+  border-radius: 9px;
+  font-size: 17px;
+}
+
+.settings-card h3 {
+  margin: 0;
+  color: #153d75;
+  font-family: 'Manrope', sans-serif;
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.settings-card > p {
+  margin: 7px 0 0;
+  color: #77879e;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.settings-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 13px 0;
+  border-bottom: 1px solid #edf1f6;
+  font-size: 13px;
+}
+
+.settings-info-row:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.settings-info-row span {
+  color: #8492a6;
+}
+
+.settings-info-row strong {
+  color: #253e60;
+  overflow-wrap: anywhere;
+}
+
+.settings-info-row .settings-admin {
+  color: #087c49;
+  background: #e2f8ec;
+  padding: 6px 13px;
+  border-radius: 20px;
+  font-size: 11px;
+}
+
+.settings-security {
+  background: #fbfdff;
+}
+
+/* =====================================
+   GENERAL TABLE
+===================================== */
+
+table {
+  border-spacing: 0;
+}
+
+table th {
+  color: #435b7a;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+table td {
+  color: #4b5d75;
+}
+
+table tbody tr:hover {
+  background: #f8fbff;
+}
+
+/* =====================================
+   AUTHENTICATION / LOGIN
+===================================== */
+
+.auth-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #062b56, #0b70bd);
+}
+
+.auth-card {
+  width: min(100%, 430px);
+  padding: 35px;
+  background: #ffffff;
+  border-radius: 17px;
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.2);
+}
+
+.auth-logo {
+  display: block;
+  width: 115px;
+  height: 95px;
+  object-fit: contain;
+  margin: 0 auto 18px;
+}
+
+.auth-card h1,
+.auth-card h2 {
+  color: #123d73;
+  text-align: center;
+}
+
+.auth-card p {
+  color: #8291a5;
+  text-align: center;
+  font-size: 13px;
+}
+
+.auth-card .field {
+  display: grid;
+  gap: 7px;
+  margin: 17px 0;
+}
+
+.auth-card .field label {
+  color: #405775;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.auth-card input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #dce5f0;
+  border-radius: 8px;
+  outline: none;
+}
+
+.auth-card input:focus {
+  border-color: #1674d2;
+  box-shadow: 0 0 0 3px rgba(22, 116, 210, 0.1);
+}
+
+.auth-card .primary {
+  width: 100%;
+  padding: 13px;
+  border: 0;
+  border-radius: 8px;
+  color: #ffffff;
+  background: #0860c8;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.auth-card .primary:hover {
+  background: #064eaa;
+}
+
+.auth-card .auth-message {
+  color: #b52b2b;
+  background: #fff0f0;
+  padding: 10px;
+  border-radius: 7px;
+  font-size: 12px;
+}
+
+.auth-card .auth-hint {
+  color: #8796aa;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+/* =====================================
+   RESPONSIVE TABLET
+===================================== */
+
+@media (max-width: 1100px) {
+  .dashboard-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dashboard-lower {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =====================================
+   RESPONSIVE MOBILE
+===================================== */
+
+@media (max-width: 768px) {
+  .dashboard-brand {
+    min-height: 100px;
+    padding: 14px;
+    gap: 15px;
+  }
+
+  .dashboard-brand img {
+    width: 75px;
+    height: 70px;
+  }
+
+  .dashboard-brand::after {
+    font-size: 19px;
+  }
+
+  .dashboard-banner {
+    height: 190px;
+  }
+
+  .dashboard-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .dashboard-stat {
+    padding: 13px 10px;
+    gap: 9px;
+  }
+
+  .dashboard-stat-icon {
+    width: 37px;
+    height: 37px;
+    font-size: 17px;
+  }
+
+  .dashboard-stat strong {
+    font-size: 15px;
+  }
+
+  .dashboard-stat span {
+    font-size: 10px;
+  }
+
+  .dashboard-stat small {
+    font-size: 9px;
+  }
+
+  .settings-header {
+    padding: 17px;
+  }
+
+  .settings-header h2 {
+    font-size: 18px;
+  }
+
+  .settings-card {
+    padding: 17px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-brand {
+    min-height: 85px;
+    padding: 10px;
+    gap: 12px;
+  }
+
+  .dashboard-brand img {
+    width: 65px;
+    height: 60px;
+  }
+
+  .dashboard-brand::after {
+    font-size: 16px;
+  }
+
+  .dashboard-banner {
+    height: 150px;
+  }
+
+  .dashboard-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-job-row {
+    flex-wrap: wrap;
+  }
+
+  .settings-info-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .auth-card {
+    padding: 23px;
+  }
+}
