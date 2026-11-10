@@ -736,3 +736,221 @@ table tbody tr:hover {
     padding: 23px;
   }
 }
+/* =====================================
+   APP SHELL: RESPONSIVE LAYOUT CONTROL
+===================================== */
+.app-shell { width: 100%; min-width: 0; }
+.app-sidebar { width: 245px; min-width: 245px; flex-shrink: 0; }
+.app-main { flex: 1; min-width: 0; overflow-x: hidden; }
+.responsive-settings-card { display: grid; gap: 10px; }
+.responsive-settings-card .settings-card-title { margin-bottom: 0; }
+.responsive-setting-field { display: grid; gap: 8px; color: #405775; font-size: 13px; font-weight: 700; }
+.responsive-settings-description, .responsive-settings-hint { margin: 0; color: #77879e; font-size: 12px; line-height: 1.6; }
+
+/* Pengaturan mode Mobile yang dapat dipilih manual */
+.app-shell.layout-mobile { flex-direction: column !important; }
+.app-shell.layout-mobile .app-sidebar { width: 100% !important; min-width: 0 !important; padding: 12px !important; }
+.app-shell.layout-mobile .app-sidebar > div:first-child { padding: 5px 8px 12px !important; margin-bottom: 10px !important; }
+.app-shell.layout-mobile .app-sidebar > div:first-child > div:first-child { font-size: 18px !important; }
+.app-shell.layout-mobile .app-sidebar nav { display: flex !important; gap: 6px !important; overflow-x: auto; padding: 2px 0 8px; scrollbar-width: thin; }
+.app-shell.layout-mobile .app-sidebar nav button { flex: 0 0 auto; white-space: nowrap; padding: 10px 12px !important; }
+.app-shell.layout-mobile .app-sidebar > div:last-child { margin-top: 8px !important; padding: 10px 8px 2px !important; }
+.app-shell.layout-mobile .app-main { width: 100%; padding: 16px !important; }
+.app-shell.layout-mobile .app-main > header { align-items: flex-start !important; }
+
+@media (max-width: 768px) {
+  .app-shell:not(.layout-desktop) { flex-direction: column !important; }
+  .app-shell:not(.layout-desktop) .app-sidebar { width: 100% !important; min-width: 0 !important; padding: 12px !important; }
+  .app-shell:not(.layout-desktop) .app-sidebar > div:first-child { padding: 5px 8px 12px !important; margin-bottom: 10px !important; }
+  .app-shell:not(.layout-desktop) .app-sidebar > div:first-child > div:first-child { font-size: 18px !important; }
+  .app-shell:not(.layout-desktop) .app-sidebar nav { display: flex !important; gap: 6px !important; overflow-x: auto; padding: 2px 0 8px; scrollbar-width: thin; }
+  .app-shell:not(.layout-desktop) .app-sidebar nav button { flex: 0 0 auto; white-space: nowrap; padding: 10px 12px !important; }
+  .app-shell:not(.layout-desktop) .app-sidebar > div:last-child { margin-top: 8px !important; padding: 10px 8px 2px !important; }
+  .app-shell:not(.layout-desktop) .app-main { width: 100%; padding: 16px !important; }
+  .app-shell:not(.layout-desktop) .app-main > header { align-items: flex-start !important; }
+  .app-shell:not(.layout-desktop) .app-main > header h1 { font-size: 21px !important; }
+}
+
+@media (max-width: 480px) {
+  .app-shell:not(.layout-desktop) .app-main { padding: 11px !important; }
+  .app-shell:not(.layout-desktop) .app-main > header { flex-direction: column; }
+  .app-shell:not(.layout-desktop) .app-main > header > div:last-child { max-width: 100%; overflow-wrap: anywhere; }
+  .responsive-settings-card { padding: 15px; }
+}
+
+/* Mode desktop mempertahankan navigasi samping meskipun layar kecil */
+.app-shell.layout-desktop { flex-direction: row !important; }
+.app-shell.layout-desktop .app-sidebar { width: 245px !important; min-width: 245px !important; }
+.app-shell.layout-desktop .app-main { padding: 25px !important; }
+
+/* =====================================================
+   RESPONSIVE REFINEMENT — layout adapts to real viewport
+   Keeps the existing visual identity and page structure.
+===================================================== */
+.app-shell { min-height: 100svh; width: 100%; }
+.app-sidebar { flex: 0 0 245px; max-width: 245px; }
+.app-main { min-width: 0; width: calc(100% - 245px); }
+.app-main > * { min-width: 0; max-width: 100%; }
+.app-main table { max-width: 100%; }
+.app-main img, .app-main video { max-width: 100%; }
+.app-main input, .app-main select, .app-main textarea { max-width: 100%; min-width: 0; }
+.app-main button { max-width: 100%; }
+.dashboard-lower > *, .dashboard-stats > *, .settings-card, .panel { min-width: 0; }
+
+@media (min-width: 769px) and (max-width: 1180px) {
+  .app-sidebar, .app-shell.layout-desktop .app-sidebar { flex-basis: 215px; width: 215px !important; min-width: 215px !important; }
+  .app-main { width: calc(100% - 215px); }
+  .app-shell.layout-desktop .app-main { padding: 20px !important; }
+  .dashboard-stats { gap: 12px; }
+  .dashboard-stat { padding: 15px 12px; }
+}
+
+/* HP: selalu otomatis menjadi satu kolom, termasuk jika mode desktop tersimpan */
+@media (max-width: 768px) {
+  .app-shell, .app-shell.layout-desktop, .app-shell.layout-mobile {
+    display: flex !important; flex-direction: column !important; width: 100% !important;
+    min-width: 0 !important; overflow-x: clip;
+  }
+  .app-shell .app-sidebar, .app-shell.layout-desktop .app-sidebar {
+    width: 100% !important; max-width: none !important; min-width: 0 !important;
+    flex: 0 0 auto !important; padding: 11px 12px 8px !important;
+    position: relative; z-index: 2;
+  }
+  .app-shell .app-sidebar > div:first-child {
+    padding: 3px 7px 10px !important; margin: 0 0 8px !important;
+  }
+  .app-shell .app-sidebar > div:first-child > div:first-child { font-size: 18px !important; }
+  .app-shell .app-sidebar nav {
+    display: flex !important; flex-direction: row !important; flex-wrap: nowrap !important;
+    gap: 7px !important; width: 100%; overflow-x: auto !important; overflow-y: hidden;
+    padding: 3px 1px 9px !important; scrollbar-width: thin; -webkit-overflow-scrolling: touch;
+  }
+  .app-shell .app-sidebar nav button {
+    flex: 0 0 auto !important; width: auto !important; min-height: 40px;
+    white-space: nowrap !important; padding: 9px 12px !important; font-size: 12px !important;
+  }
+  .app-shell .app-sidebar > div:last-child { margin-top: 6px !important; padding: 8px 6px 2px !important; }
+  .app-shell .app-main, .app-shell.layout-desktop .app-main {
+    display: block; width: 100% !important; max-width: 100% !important; min-width: 0 !important;
+    flex: 1 1 auto !important; padding: 14px !important; overflow-x: hidden;
+  }
+  .app-shell .app-main > header { flex-wrap: wrap; gap: 10px !important; align-items: flex-start !important; }
+  .app-shell .app-main > header h1 { font-size: clamp(18px, 5vw, 22px) !important; }
+  .dashboard-stats { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .dashboard-lower { grid-template-columns: minmax(0, 1fr) !important; }
+  .dashboard-banner { height: clamp(135px, 38vw, 220px); }
+  .dashboard-brand { min-width: 0; }
+  .settings-card, .panel { width: 100%; max-width: 100%; }
+  /* Tabel lebar tetap utuh dan dapat digeser horizontal, bukan memotong halaman */
+  .app-main table { display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .app-main td, .app-main th { white-space: nowrap; }
+  .app-main input, .app-main select, .app-main textarea { font-size: 16px; }
+}
+
+@media (max-width: 480px) {
+  .app-shell .app-main, .app-shell.layout-desktop .app-main { padding: 10px !important; }
+  .app-shell .app-sidebar { padding: 9px 9px 6px !important; }
+  .app-shell .app-sidebar nav button { min-height: 38px; padding: 8px 10px !important; font-size: 11px !important; }
+  .dashboard-stats { gap: 8px !important; }
+  .dashboard-stat { padding: 11px 9px !important; gap: 7px !important; }
+  .dashboard-stat strong { font-size: 14px !important; }
+  .dashboard-stat-icon { width: 32px; height: 32px; font-size: 15px; }
+  .dashboard-brand::after { font-size: clamp(13px, 4vw, 17px); }
+  .settings-card { padding: 13px !important; }
+  .panel { padding: 13px !important; }
+}
+
+/* Layar sangat lebar: konten tetap nyaman dibaca dan tidak melebar berlebihan */
+@media (min-width: 1600px) {
+  .app-main { padding-left: 34px !important; padding-right: 34px !important; }
+  .app-main > section, .app-main > div { max-width: 1720px; }
+}
+
+/* POS split workspace and live thermal receipt preview */
+.cashier-workspace { width: 100%; max-width: 1500px; margin: 0 auto; min-width: 0; }
+.cashier-heading { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 16px; }
+.cashier-split-layout { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(300px, .88fr); gap: 18px; align-items: start; min-width: 0; }
+.cashier-entry-panel { display: grid; gap: 14px; min-width: 0; }
+.cashier-form-card, .cashier-preview-panel { background: #fff; border: 1px solid #e1e8f0; border-radius: 13px; padding: 15px; min-width: 0; box-shadow: 0 3px 12px rgba(20, 47, 82, .04); }
+.cashier-form-card h3, .cashier-preview-heading h3 { margin: 0 0 12px; color: #173d70; font-size: 15px; }
+.cashier-fields-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.cashier-fields-grid label, .cashier-item-edit-grid label, .cashier-note-field { display: grid; gap: 6px; min-width: 0; }
+.cashier-fields-grid label > span, .cashier-item-edit-grid label > span, .cashier-note-field > span { color: #52627a; font-size: 12px; font-weight: 700; }
+.cashier-add-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 9px; align-items: center; }
+.cashier-cart-title, .cashier-cart-item-heading, .cashier-preview-heading, .cashier-total-strip { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.cashier-cart-title h3 { margin-bottom: 0; }
+.cashier-cart-title > span { font-size: 11px; color: #64748b; background: #f1f5f9; padding: 5px 9px; border-radius: 20px; }
+.cashier-empty-cart { padding: 22px 10px; text-align: center; color: #8492a6; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 9px; font-size: 13px; margin-top: 12px; }
+.cashier-cart-list { display: grid; gap: 10px; margin-top: 12px; }
+.cashier-cart-item { border: 1px solid #e5ebf2; border-radius: 10px; padding: 11px; min-width: 0; }
+.cashier-cart-item-heading strong { display: block; color: #203650; font-size: 13px; overflow-wrap: anywhere; }
+.cashier-cart-item-heading small { display: block; color: #718096; font-size: 11px; margin-top: 3px; }
+.cashier-remove-button { border: 0; border-radius: 7px; padding: 7px 10px; background: #fff0f0; color: #c53030; font-weight: 700; cursor: pointer; flex-shrink: 0; }
+.cashier-item-edit-grid { display: grid; grid-template-columns: minmax(0, 1fr) 85px minmax(105px, auto); gap: 9px; align-items: end; margin-top: 10px; }
+.cashier-item-subtotal { display: grid; gap: 5px; min-width: 0; padding-bottom: 9px; }
+.cashier-item-subtotal span { color: #64748b; font-size: 11px; }
+.cashier-item-subtotal strong { color: #174b86; font-size: 13px; overflow-wrap: anywhere; }
+.cashier-payment-grid { margin-top: 13px; }
+.cashier-total-strip { margin-top: 14px; padding: 12px; border-radius: 9px; background: #edf5ff; color: #21476f; }
+.cashier-total-strip strong { font-size: 20px; color: #087443; }
+.cashier-submit-button { width: 100%; margin-top: 12px; padding: 13px 16px !important; }
+.cashier-preview-panel { position: sticky; top: 16px; }
+.cashier-preview-heading { margin-bottom: 13px; }
+.cashier-preview-heading h3 { margin: 0 0 3px; }
+.cashier-preview-heading span { color: #718096; font-size: 11px; }
+.cashier-live-indicator { border-radius: 20px; padding: 4px 8px; color: #087443 !important; background: #e8f8ef; font-size: 10px !important; font-weight: 800; letter-spacing: .5px; }
+.cashier-paper-wrap { padding: 14px 8px; background: repeating-linear-gradient(135deg, #edf1f5, #edf1f5 8px, #e7ecf1 8px, #e7ecf1 16px); border-radius: 10px; display: flex; justify-content: center; align-items: flex-start; max-height: min(75vh, 900px); overflow: auto; }
+.cashier-paper { width: 58mm; max-width: 100%; min-height: 210px; padding: 7mm 4mm; background: #fff; color: #111; box-shadow: 0 4px 18px rgba(15, 23, 42, .15); font: 10px/1.4 Arial, sans-serif; overflow-wrap: anywhere; }
+.cashier-paper.paper-80 { width: 80mm; }
+.cashier-paper-logo { display: block; max-width: 22mm; max-height: 18mm; object-fit: contain; margin: 0 auto 5px; }
+.cashier-paper h2 { margin: 0 0 3px; text-align: center; font-size: 15px; line-height: 1.2; font-weight: 800; }
+.cashier-paper > p:not(.cashier-paper-empty):not(.cashier-paper-note):not(.cashier-paper-thanks):not(.cashier-paper-footer) { margin: 2px 0; text-align: center; font-size: 9px; }
+.cashier-paper-rule { border-top: 1px dashed #555; margin: 7px 0; }
+.cashier-paper-meta { display: flex; justify-content: space-between; gap: 7px; margin: 3px 0; font-size: 9px; }
+.cashier-paper-meta span { flex-shrink: 0; }
+.cashier-paper-meta b { text-align: right; overflow-wrap: anywhere; }
+.cashier-paper-section-title { display: block; font-size: 9px; margin-bottom: 6px; }
+.cashier-paper-line-item { margin: 6px 0; font-size: 9px; }
+.cashier-paper-line-item > b { display: block; margin-bottom: 2px; }
+.cashier-paper-line-item > div { display: flex; justify-content: space-between; gap: 5px; }
+.cashier-paper-line-item > div span { color: #333; }
+.cashier-paper-line-item > div strong { text-align: right; }
+.cashier-paper-empty, .cashier-paper-note { font-size: 9px; color: #555; }
+.cashier-paper-total { display: flex; justify-content: space-between; gap: 5px; align-items: center; font-size: 13px; font-weight: 800; margin: 5px 0; }
+.cashier-paper-thanks, .cashier-paper-footer { text-align: center; font-size: 9px; margin: 5px 0; }
+.cashier-paper-thanks { font-weight: 800; }
+.cashier-preview-hint { color: #718096; font-size: 11px; line-height: 1.5; margin: 10px 2px 0; }
+.cashier-mobile-tabs { display: none; }
+.settings-logo-preview-wrap { display: flex; align-items: center; gap: 14px; margin: 12px 0 14px; }
+.settings-logo-preview { width: 112px; height: 112px; object-fit: contain; border: 1px solid #dce5ef; border-radius: 10px; padding: 7px; background: #fff; }
+.settings-logo-empty { width: 112px; height: 112px; display: grid; place-items: center; text-align: center; padding: 8px; border: 1px dashed #b8c6d8; border-radius: 10px; color: #718096; font-size: 12px; }
+.settings-logo-preview-wrap p { color: #64748b; font-size: 12px; margin: 5px 0 0; line-height: 1.5; }
+.logo-upload-control { cursor: pointer; }
+.logo-upload-control input { max-width: 100%; font-size: 12px; }
+.logo-upload-control small { display: block; color: #64748b; font-weight: 400; margin-top: 8px; }
+@media (max-width: 900px) {
+  .cashier-split-layout { grid-template-columns: minmax(0, 1fr) minmax(270px, .8fr); gap: 12px; }
+  .cashier-item-edit-grid { grid-template-columns: minmax(0, 1fr) 75px; }
+  .cashier-item-subtotal { grid-column: 1 / -1; display: flex; justify-content: space-between; padding: 7px 0 0; border-top: 1px solid #edf1f5; }
+}
+@media (max-width: 700px) {
+  .cashier-heading { display: block; }
+  .cashier-mobile-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; margin-top: 13px; padding: 4px; background: #eaf0f7; border-radius: 10px; }
+  .cashier-mobile-tabs button { border: 0; background: transparent; color: #4b6078; border-radius: 7px; padding: 10px 8px; font-weight: 700; font-size: 12px; }
+  .cashier-mobile-tabs button.active { background: #fff; color: #123f75; box-shadow: 0 1px 5px rgba(15, 35, 60, .12); }
+  .cashier-split-layout { display: block; }
+  .cashier-entry-panel, .cashier-preview-panel { display: none; }
+  .cashier-entry-panel.mobile-panel-active, .cashier-preview-panel.mobile-panel-active { display: grid; }
+  .cashier-preview-panel { position: static; margin-top: 0; }
+  .cashier-form-card { padding: 12px; }
+  .cashier-fields-grid { grid-template-columns: minmax(0, 1fr); }
+  .cashier-add-row { grid-template-columns: minmax(0, 1fr); }
+  .cashier-add-row button { width: 100%; }
+  .cashier-item-edit-grid { grid-template-columns: minmax(0, 1fr) 82px; }
+  .settings-logo-preview-wrap { align-items: flex-start; }
+}
+@media (max-width: 380px) {
+  .cashier-paper { padding: 5mm 3mm; }
+  .cashier-cart-item { padding: 9px; }
+  .cashier-item-edit-grid { grid-template-columns: minmax(0, 1fr) 72px; }
+}

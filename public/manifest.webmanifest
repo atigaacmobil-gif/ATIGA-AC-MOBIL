@@ -1,0 +1,15 @@
+{
+  "id": "/",
+  "name": "ATIGA AC MOBIL",
+  "short_name": "ATIGA POS",
+  "description": "Aplikasi kasir dan manajemen bengkel ATIGA AC MOBIL",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f4f7fb",
+  "theme_color": "#123B70",
+  "icons": [
+    { "src": "/icons/atiga-icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/icons/atiga-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
