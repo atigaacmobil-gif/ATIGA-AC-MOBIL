@@ -2,6 +2,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import AuthGate from './AuthGate'
 import { supabase } from './supabase'
+import PrinterSettings from './PrinterSettings'
 import './App.css'
 
 const MENU = [
@@ -1799,6 +1800,8 @@ font-weight: 600;
                     <div style={{ background: '#f4f7fb', padding: 13, borderRadius: 10, fontSize: 12, color: '#52627a' }}><b>Catatan:</b> Logo mengikuti gambar pada bagian Logo Usaha di atas. Pastikan ukuran kertas di pengaturan printer Windows sama dengan pilihan di sini. Tekan <b>Simpan Pengaturan</b> agar perubahan tersimpan.</div>
                   </div>
                 </div>
+
+                <PrinterSettings />
 
                 <div className="settings-card responsive-settings-card">
                   <div className="settings-card-title">
